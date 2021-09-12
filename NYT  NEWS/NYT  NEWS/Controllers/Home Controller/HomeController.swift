@@ -29,36 +29,31 @@ class HomeController: UIViewController {
     let networkHandler = NetworkHandler()
     var articles: ArticleModel?
     var results: [Result] = []
-    
+    var entity: Result?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         
-        
-        
-        DispatchQueue.global(qos: .userInitiated).async {
-            print("This is run on a background queue")
-            
-            self.callAPI(timePeriod: "1")
-        }
-        
-            self.btnDayOutlet.backgroundColor = Config.greenColor
-            self.btnDayOutlet.setTitleColor(Config.whiteColor, for: .normal)
-            self.timePeriodSelected(buttonSelected: .day)
-       
-
-//        setDeafultButtons()
+        setDeafultButtons()
         setNavigationBar()
     }
     
     
     func setNavigationBar(){
+        
+        // Set Nav Title
         self.navigationItem.title = "NY TIMES".uppercased()
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: bold(25), NSAttributedString.Key.foregroundColor: Config.blackColor ?? .black
         ]
         
+        // Set Nav Back
+        self.navigationItem.backButtonTitle = "Back"
+        self.navigationItem.leftBarButtonItem?.tintColor = Config.greenColor
+        self.navigationItem.backBarButtonItem?.tintColor = Config.greenColor
+        
+        // Set Nav Background
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
@@ -133,21 +128,21 @@ class HomeController: UIViewController {
     func callAPI(timePeriod: String){
         
         // Strat animation
-        
         DispatchQueue.main.async {
-//            self.view.startLoading()
+            self.view.startLoading()
         }
         
         // Params
         let section = "all-sections"
         let timePeriodSelected = timePeriod
         
-        networkHandler.postData(urlPath: "svc/mostpopular/v2/mostemailed/\(section)/\(timePeriodSelected).json?api-key=\(Config.APIKey)", method: .get, with: ArticleModel.self, parameters: .none) { [weak self](response) in
-            
+        networkHandler.postData(urlPath: "svc/mostpopular/v2/mostemailed/\(section)/\(timePeriodSelected).json?api-key=\(Config.APIKey)", method: .get, with: ArticleModel.self, parameters: .none) { [weak self] (response) in
             
             // Stop animation
-            DispatchQueue.global(qos: .userInitiated).async {
-                print("This is run on a background queue")
+            DispatchQueue.main.async {
+                    self?.view.stopLoading()
+            }
+   
                 guard let self = self , let data = response else {return}
                 
                 // Remove all data
@@ -156,21 +151,14 @@ class HomeController: UIViewController {
                 self.results.append(contentsOf: data.results ?? [] )
                 // Reload View
                 self.reloadView()
-                DispatchQueue.main.async {
-                    print("This is run on the main queue, after the previous code in outer block")
-                    
-//                   self.view.stopLoading()
-                     
-                }
-            }
-            
-           
-            
-            
+             
         } returnError: { error in
-           // self.view.stopLoading()
+            // Stop animation
+            DispatchQueue.main.async {
+                self.view.stopLoading()
+            }
             // Show error message
-           // self.alert(title: "Error", message: error?.localizedDescription ?? "Ops, something went wrong try again later.", preferredStyle: .alert, completion: { _ in})
+            self.alert(title: "Error", message: error?.localizedDescription ?? "Ops, something went wrong try again later.", preferredStyle: .alert, completion: { _ in })
         }
         
     }
@@ -182,6 +170,20 @@ class HomeController: UIViewController {
             self.scrollToTop()
         }
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "articleDetailsController" {
+            if let vc = segue.destination as? ArticleDetailsController {
+                vc.homeController = self
+                vc.entity = self.entity
+            }
+        }
+    }
+    
+    
+    
+    
 }
 
 
@@ -209,29 +211,12 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        view.endEditing(true)
-        /*
-        // Show Popup ArtistDetailController
-        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "artistDetailController") as! ArtistDetailController
-        popOverVC.entity = results[indexPath.row]
-        self.present(popOverVC, animated: true)*/
+        entity = results[indexPath.row]
+      performSegue(withIdentifier: "articleDetailsController", sender: self)
     }
 }
 
-// input string should always be in format "21/07/2016" ("dd/MM/yyyy")
-/*
- Usaing
- - let day = formattedDateFromString(dateString: result.publishedDate ?? "", dateFormat: "yyyy-MM-dd", toFormat: "dd/mm/yyyy")
- - let hour = formattedDateFromString(dateString: result.updated ?? "", dateFormat: "yyyy-MM-dd HH:mm:ss", toFormat: "HH:MM")
- */
-func formattedDateFromString(dateString: String, dateFormat: String, toFormat: String) -> String? {
-    
-    let inputFormatter = DateFormatter()
-    inputFormatter.dateFormat = dateFormat
-    if let date = inputFormatter.date(from: dateString) {
-        let outputFormatter = DateFormatter()
-        outputFormatter.dateFormat = toFormat
-        return outputFormatter.string(from: date)
-    }
-    return nil
-}
+
+
+
+

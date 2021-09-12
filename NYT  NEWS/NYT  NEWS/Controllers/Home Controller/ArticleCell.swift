@@ -16,8 +16,8 @@ class ArticleCell: UITableViewCell {
     @IBOutlet weak var lblShareHourArticle: UILabel!
     @IBOutlet weak var lblDescriptionArticle: UILabel!
     
-    func setUpCell(result: Result){
-        
+
+    func setUpCell(result: Result){        
         
         // Set imageArticle
         if !(result.media?.isEmpty ?? true) {
@@ -27,9 +27,9 @@ class ArticleCell: UITableViewCell {
         }else{
             imageArticle.image = UIImage(named: "place-holder")
         }
-            
+        
         imageArticle.layer.cornerRadius = Config.CornerRadius
-        imageView?.contentMode = .scaleAspectFit
+        imageArticle.contentMode = .scaleAspectFit
         
         // Set Title Article
         lblTitleArticle.text = result.title ?? ""

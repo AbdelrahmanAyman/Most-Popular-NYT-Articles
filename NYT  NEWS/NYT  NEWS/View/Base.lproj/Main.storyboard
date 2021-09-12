@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -74,11 +73,11 @@
                                     <constraint firstAttribute="height" constant="65" id="pXX-pd-x3i"/>
                                 </constraints>
                             </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="220" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="u1b-2k-Adn">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="220" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="u1b-2k-Adn">
                                 <rect key="frame" x="0.0" y="173" width="414" height="723"/>
                                 <color key="backgroundColor" name="WhiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="articleCell" rowHeight="220" id="aIM-s9-bK4" customClass="ArticleCell" customModule="NYT__NEWS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="articleCell" rowHeight="220" id="aIM-s9-bK4" customClass="ArticleCell" customModule="NYT__NEWS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.5" width="414" height="220"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aIM-s9-bK4" id="NOA-Y5-2mD">
@@ -148,7 +147,6 @@ Il servizio con sms non verrà comunque adottato dalle questure di Bologna, Napo
                                             <outlet property="lblShareDateArticle" destination="tBH-K3-2RL" id="2Of-6N-NoQ"/>
                                             <outlet property="lblShareHourArticle" destination="v0f-L0-kgf" id="Pnc-1h-ft7"/>
                                             <outlet property="lblTitleArticle" destination="aHJ-sY-IbU" id="YIP-fp-GcX"/>
-                                            <segue destination="HJV-kA-AEg" kind="show" identifier="ShowArticleSegue" id="OxB-Ea-4X7"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -166,64 +164,157 @@ Il servizio con sms non verrà comunque adottato dalle questure di Bologna, Napo
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="u1b-2k-Adn" secondAttribute="trailing" id="z6Y-Fc-oRA"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="NT TIMES" id="een-CM-3jH"/>
+                    <navigationItem key="navigationItem" title="NT TIMES" id="een-CM-3jH">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="Vl0-cd-eKi"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="btnDayOutlet" destination="uOX-Xh-0uv" id="qZC-W4-9ak"/>
                         <outlet property="btnMonthOutlet" destination="ngr-NA-Tov" id="q0n-oK-cib"/>
                         <outlet property="btnWeekOutlet" destination="q5v-qq-3ZH" id="xIR-oM-6zx"/>
                         <outlet property="lblSearchArticleTitle" destination="AaH-ke-8Rc" id="zbx-h7-cZH"/>
                         <outlet property="tableView" destination="u1b-2k-Adn" id="uYq-K1-1Il"/>
+                        <segue destination="kp7-w1-A9s" kind="show" identifier="articleDetailsController" id="Dxp-8u-gT9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1265.217391304348" y="91.071428571428569"/>
         </scene>
-        <!--Article View Controller-->
-        <scene sceneID="zpT-HY-Naf">
+        <!--Article Details Controller-->
+        <scene sceneID="2bp-d7-ndK">
             <objects>
-                <viewController id="HJV-kA-AEg" customClass="ArticleViewController" customModule="NYT__NEWS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7hm-UI-ehu">
+                <tableViewController id="kp7-w1-A9s" customClass="ArticleDetailsController" customModule="NYT__NEWS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4iP-zZ-24x">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rectangle.3.offgrid.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="WLx-Ko-1zq">
-                                <rect key="frame" x="20" y="120" width="166" height="156"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Titolo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5zA-dK-eqz">
-                                <rect key="frame" x="20" y="285" width="131" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="21"/>
-                                <color key="textColor" red="0.68235296010000002" green="0.68235296010000002" blue="0.68235296010000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Amr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wNA-Z5-THw">
-                                <rect key="frame" x="20" y="325" width="28" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="15" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="19d-nC-jwj">
-                                <rect key="frame" x="22" y="378" width="374" height="253"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <string key="text">Inserisci il numero di pratica (10 caratteri) o il tuo numero di assicurata (12 caratteri) della richiesta del tuo permesso di soggiorno 
+                        <color key="backgroundColor" name="WhiteColor"/>
+                        <sections>
+                            <tableViewSection id="ap2-8b-qlX">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="170" id="3SR-j1-QED">
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="170"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3SR-j1-QED" id="luc-O1-aSj">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="170"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="place-holder" translatesAutoresizingMaskIntoConstraints="NO" id="WLx-Ko-1zq">
+                                                    <rect key="frame" x="10" y="10" width="150" height="150"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="150" id="4qR-i3-TkA"/>
+                                                        <constraint firstAttribute="height" constant="150" id="ggt-3K-pEq"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="WLx-Ko-1zq" firstAttribute="top" secondItem="luc-O1-aSj" secondAttribute="top" constant="10" id="DC4-60-bzy"/>
+                                                <constraint firstAttribute="bottom" secondItem="WLx-Ko-1zq" secondAttribute="bottom" constant="10" id="H6Y-Zm-1fg"/>
+                                                <constraint firstItem="WLx-Ko-1zq" firstAttribute="leading" secondItem="luc-O1-aSj" secondAttribute="leading" constant="10" id="v7t-Tw-KRE"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="90" id="Cdd-Lj-Wus">
+                                        <rect key="frame" x="0.0" y="194.5" width="414" height="90"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Cdd-Lj-Wus" id="8pY-J8-4VZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titolo" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sva-Tc-hdQ">
+                                                    <rect key="frame" x="10" y="10" width="394" height="36"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
+                                                    <color key="textColor" name="BlackColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titolo" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pg1-hq-PoL">
+                                                    <rect key="frame" x="10" y="56" width="394" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                    <color key="textColor" name="BlackColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="sva-Tc-hdQ" firstAttribute="leading" secondItem="8pY-J8-4VZ" secondAttribute="leading" constant="10" id="GK0-ru-FuQ"/>
+                                                <constraint firstItem="pg1-hq-PoL" firstAttribute="top" secondItem="sva-Tc-hdQ" secondAttribute="bottom" constant="10" id="J9p-jG-Bgl"/>
+                                                <constraint firstAttribute="trailing" secondItem="sva-Tc-hdQ" secondAttribute="trailing" constant="10" id="POL-wl-OgK"/>
+                                                <constraint firstAttribute="trailing" secondItem="pg1-hq-PoL" secondAttribute="trailing" constant="10" id="XQG-cI-1mp"/>
+                                                <constraint firstItem="pg1-hq-PoL" firstAttribute="top" secondItem="sva-Tc-hdQ" secondAttribute="bottom" constant="10" id="d0m-bg-zFa"/>
+                                                <constraint firstItem="pg1-hq-PoL" firstAttribute="leading" secondItem="8pY-J8-4VZ" secondAttribute="leading" constant="10" id="f6S-HW-3WQ"/>
+                                                <constraint firstAttribute="bottom" secondItem="pg1-hq-PoL" secondAttribute="bottom" constant="12.5" id="i06-Eb-vYF"/>
+                                                <constraint firstItem="sva-Tc-hdQ" firstAttribute="top" secondItem="8pY-J8-4VZ" secondAttribute="top" constant="10" id="m6X-rG-gxC"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="264" id="HD0-Z0-9sR">
+                                        <rect key="frame" x="0.0" y="284.5" width="414" height="264"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HD0-Z0-9sR" id="BeW-dl-9ud">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="264"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LxL-nt-13a">
+                                                    <rect key="frame" x="10" y="10" width="394" height="239"/>
+                                                    <string key="text">Inserisci il numero di pratica (10 caratteri) o il tuo numero di assicurata (12 caratteri) della richiesta del tuo permesso di soggiorno 
 Oltre all’avviso visualizzabile tramite questo sistema informatico, sullo stato del procedimento, sarà inviato al cittadino straniero un sms con l’indicazione delle modalità per il ritiro del permesso di soggiorno già pronto: giorno, ora e luogo.
 Il servizio con sms non verrà comunque adottato dalle questure di Bologna, Napoli, Modena, Padova, Caserta e Genova, che continueranno ad utilizzare propri sistemi.</string>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
-                                <color key="textColor" white="0.0" alpha="0.76178281670374581" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="fJ1-Mm-0fD"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="mtz-85-plZ"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="P9h-du-af2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                    <color key="textColor" name="BlackColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="LxL-nt-13a" secondAttribute="trailing" constant="10" id="1HV-NW-ISS"/>
+                                                <constraint firstAttribute="bottom" secondItem="LxL-nt-13a" secondAttribute="bottom" constant="15" id="Jij-Sk-chk"/>
+                                                <constraint firstItem="LxL-nt-13a" firstAttribute="top" secondItem="BeW-dl-9ud" secondAttribute="top" constant="10" id="vQa-gK-MIQ"/>
+                                                <constraint firstItem="LxL-nt-13a" firstAttribute="leading" secondItem="BeW-dl-9ud" secondAttribute="leading" constant="10" id="vZo-lz-MEr"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="264" id="qBH-No-RjL">
+                                        <rect key="frame" x="0.0" y="548.5" width="414" height="264"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qBH-No-RjL" id="Xcm-ZD-pN9">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="264"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Pi-ac-1UL">
+                                                    <rect key="frame" x="10" y="15" width="394" height="234"/>
+                                                    <string key="text">Inserisci il numero di pratica (10 caratteri) o il tuo numero di assicurata (12 caratteri) della richiesta del tuo permesso di soggiorno 
+Oltre all’avviso visualizzabile tramite questo sistema informatico, sullo stato del procedimento, sarà inviato al cittadino straniero un sms con l’indicazione delle modalità per il ritiro del permesso di soggiorno già pronto: giorno, ora e luogo.
+Il servizio con sms non verrà comunque adottato dalle questure di Bologna, Napoli, Modena, Padova, Caserta e Genova, che continueranno ad utilizzare propri sistemi.</string>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                    <color key="textColor" name="BlackColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="3Pi-ac-1UL" secondAttribute="trailing" constant="10" id="CxV-fX-shT"/>
+                                                <constraint firstItem="3Pi-ac-1UL" firstAttribute="top" secondItem="Xcm-ZD-pN9" secondAttribute="top" constant="15" id="ZFz-9p-jBS"/>
+                                                <constraint firstItem="3Pi-ac-1UL" firstAttribute="leading" secondItem="Xcm-ZD-pN9" secondAttribute="leading" constant="10" id="kOZ-iq-hFx"/>
+                                                <constraint firstAttribute="bottom" secondItem="3Pi-ac-1UL" secondAttribute="bottom" constant="15" id="xCH-gd-amn"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="kp7-w1-A9s" id="rqe-2y-uE7"/>
+                            <outlet property="delegate" destination="kp7-w1-A9s" id="dOm-Sc-s2J"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="LSd-ao-a8P"/>
+                    <connections>
+                        <outlet property="imageArticle" destination="WLx-Ko-1zq" id="DSY-Fa-C0p"/>
+                        <outlet property="lblAbstractArticle" destination="3Pi-ac-1UL" id="kCT-xn-7r7"/>
+                        <outlet property="lblAuthorName" destination="pg1-hq-PoL" id="ahw-lR-lDL"/>
+                        <outlet property="lblDescriptionArticle" destination="LxL-nt-13a" id="0MG-hN-Cgi"/>
+                        <outlet property="lblTitleArticle" destination="sva-Tc-hdQ" id="D8s-Ao-vSj"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sfr-Zk-wlC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1987" y="91"/>
+            <point key="canvasLocation" x="2053.6231884057975" y="90.401785714285708"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PPc-aE-XKe">
@@ -249,7 +340,6 @@ Il servizio con sms non verrà comunque adottato dalle questure di Bologna, Napo
     </scenes>
     <resources>
         <image name="place-holder" width="960" height="540"/>
-        <image name="rectangle.3.offgrid.fill" catalog="system" width="128" height="81"/>
         <namedColor name="BlackColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
@@ -262,8 +352,5 @@ Il servizio con sms non verrà comunque adottato dalle questure di Bologna, Napo
         <namedColor name="WhiteColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
