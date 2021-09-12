@@ -3,10 +3,16 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--NT TIMES-->
         <scene sceneID="tne-QT-ifu">
@@ -17,135 +23,147 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="lPA-VU-Az0">
-                                <rect key="frame" x="15" y="103" width="384" height="75"/>
+                                <rect key="frame" x="15" y="93" width="384" height="65"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search your article" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AaH-ke-8Rc">
-                                        <rect key="frame" x="0.0" y="0.0" width="384" height="35"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="uo5-kd-5kL" userLabel="Bottoms group">
-                                        <rect key="frame" x="0.0" y="40" width="384" height="35"/>
+                                        <rect key="frame" x="0.0" y="35" width="384" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uOX-Xh-0uv">
-                                                <rect key="frame" x="0.0" y="0.0" width="121.5" height="35"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="121.5" height="30"/>
                                                 <color key="backgroundColor" red="0.96470600370000004" green="0.96470588450000005" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
                                                 <state key="normal" title="24H">
                                                     <color key="titleColor" red="0.2272740139418904" green="0.44069094308699031" blue="0.23353239455176886" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="onDaySelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="m5D-6U-20a"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q5v-qq-3ZH">
-                                                <rect key="frame" x="131.5" y="0.0" width="121" height="35"/>
+                                                <rect key="frame" x="131.5" y="0.0" width="121" height="30"/>
                                                 <color key="backgroundColor" red="0.96470600370000004" green="0.96470588450000005" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <state key="normal" title="1W">
                                                     <color key="titleColor" red="0.22727401389999999" green="0.44069094310000001" blue="0.2335323946" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="onWeekSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vGa-Lt-GkY"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ngr-NA-Tov">
-                                                <rect key="frame" x="262.5" y="0.0" width="121.5" height="35"/>
+                                                <rect key="frame" x="262.5" y="0.0" width="121.5" height="30"/>
                                                 <color key="backgroundColor" red="0.96470600370000004" green="0.96470588450000005" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <state key="normal" title="1M">
                                                     <color key="titleColor" red="0.22727401389999999" green="0.44069094310000001" blue="0.2335323946" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="onMonthSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Wb-EA-aV5"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="pXX-pd-x3i"/>
+                                </constraints>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="220" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="u1b-2k-Adn">
-                                <rect key="frame" x="10" y="193" width="394" height="703"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="0.0" y="173" width="414" height="723"/>
+                                <color key="backgroundColor" name="WhiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="articleCell" rowHeight="220" id="aIM-s9-bK4" customClass="ArticleCell" customModule="NYT__NEWS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.5" width="394" height="220"/>
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="220"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aIM-s9-bK4" id="NOA-Y5-2mD">
-                                            <rect key="frame" x="0.0" y="0.0" width="394" height="220"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="220"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rectangle.3.offgrid.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="sEa-BW-goy">
-                                                    <rect key="frame" x="15" y="16" width="80" height="77.5"/>
-                                                    <color key="backgroundColor" red="0.22727401389999999" green="0.44069094310000001" blue="0.2335323946" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="place-holder" translatesAutoresizingMaskIntoConstraints="NO" id="sEa-BW-goy">
+                                                    <rect key="frame" x="15" y="15" width="75" height="75"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="80" id="EKa-ar-4qS"/>
-                                                        <constraint firstAttribute="width" constant="80" id="aXg-x8-NRi"/>
+                                                        <constraint firstAttribute="height" constant="75" id="EKa-ar-4qS"/>
+                                                        <constraint firstAttribute="width" constant="75" id="aXg-x8-NRi"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titolo" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHJ-sY-IbU">
-                                                    <rect key="frame" x="103" y="15" width="283" height="19.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titolo" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHJ-sY-IbU">
+                                                    <rect key="frame" x="98" y="15" width="308" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" name="BlackColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cu7-lR-6LU">
-                                                    <rect key="frame" x="15" y="105" width="364" height="100"/>
-                                                    <string key="text">Inserisci il numero di pratica (10 caratteri) o il tuo numero di assicurata (12 caratteri) della richiesta del tuo permesso di soggiorno 
-Oltre all’avviso visualizzabile tramite questo sistema informatico, sullo stato del procedimento, sarà inviato al cittadino straniero un sms con l’indicazione delle modalità per il ritiro del permesso di soggiorno già pronto: giorno, ora e luogo.
-Il servizio con sms non verrà comunque adottato dalle questure di Bologna, Napoli, Modena, Padova, Caserta e Genova, che continueranno ad utilizzare propri sistemi.</string>
-                                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
-                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="MtZ-1H-oTA">
-                                                    <rect key="frame" x="103" y="42.5" width="283" height="34"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="MtZ-1H-oTA">
+                                                    <rect key="frame" x="98" y="39.5" width="308" height="31"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dd/mm/yyyy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBH-K3-2RL">
-                                                            <rect key="frame" x="0.0" y="0.0" width="283" height="14.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="308" height="14.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="textColor" name="GrayColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HH:MM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v0f-L0-kgf">
-                                                            <rect key="frame" x="0.0" y="19.5" width="283" height="14.5"/>
+                                                            <rect key="frame" x="0.0" y="16.5" width="308" height="14.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="textColor" name="GrayColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                 </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x3W-fc-bej">
+                                                    <rect key="frame" x="10" y="105" width="394" height="105"/>
+                                                    <string key="text">Inserisci il numero di pratica (10 caratteri) o il tuo numero di assicurata (12 caratteri) della richiesta del tuo permesso di soggiorno 
+Oltre all’avviso visualizzabile tramite questo sistema informatico, sullo stato del procedimento, sarà inviato al cittadino straniero un sms con l’indicazione delle modalità per il ritiro del permesso di soggiorno già pronto: giorno, ora e luogo.
+Il servizio con sms non verrà comunque adottato dalle questure di Bologna, Napoli, Modena, Padova, Caserta e Genova, che continueranno ad utilizzare propri sistemi.</string>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                    <color key="textColor" name="BlackColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" red="0.96470600370000004" green="0.96470588450000005" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
-                                                <constraint firstItem="cu7-lR-6LU" firstAttribute="leading" secondItem="NOA-Y5-2mD" secondAttribute="leading" constant="15" id="0Hm-mh-pdN"/>
                                                 <constraint firstItem="aHJ-sY-IbU" firstAttribute="leading" secondItem="sEa-BW-goy" secondAttribute="trailing" constant="8" id="4Rk-pE-OEk"/>
-                                                <constraint firstAttribute="trailing" secondItem="cu7-lR-6LU" secondAttribute="trailing" constant="15" id="50r-ZQ-zid"/>
+                                                <constraint firstItem="x3W-fc-bej" firstAttribute="leading" secondItem="NOA-Y5-2mD" secondAttribute="leading" constant="10" id="65I-jn-TwV"/>
+                                                <constraint firstAttribute="bottom" secondItem="x3W-fc-bej" secondAttribute="bottom" constant="10" id="MQw-DA-hpH"/>
                                                 <constraint firstItem="sEa-BW-goy" firstAttribute="leading" secondItem="NOA-Y5-2mD" secondAttribute="leading" constant="15" id="OPm-HO-R9H"/>
-                                                <constraint firstItem="cu7-lR-6LU" firstAttribute="top" secondItem="sEa-BW-goy" secondAttribute="bottom" constant="10" id="S9A-oK-fbY"/>
+                                                <constraint firstAttribute="trailing" secondItem="x3W-fc-bej" secondAttribute="trailing" constant="10" id="a6X-J8-oC2"/>
                                                 <constraint firstAttribute="trailing" secondItem="MtZ-1H-oTA" secondAttribute="trailing" constant="8" id="b8U-Cu-uVo"/>
-                                                <constraint firstAttribute="bottom" secondItem="cu7-lR-6LU" secondAttribute="bottom" constant="15" id="e2v-9a-839"/>
                                                 <constraint firstAttribute="trailing" secondItem="aHJ-sY-IbU" secondAttribute="trailing" constant="8" id="huo-GK-p04"/>
                                                 <constraint firstItem="MtZ-1H-oTA" firstAttribute="leading" secondItem="sEa-BW-goy" secondAttribute="trailing" constant="8" id="iXP-Ly-rsO"/>
                                                 <constraint firstItem="sEa-BW-goy" firstAttribute="top" secondItem="NOA-Y5-2mD" secondAttribute="top" constant="15" id="pF0-Oj-0K9"/>
                                                 <constraint firstItem="aHJ-sY-IbU" firstAttribute="top" secondItem="sEa-BW-goy" secondAttribute="top" id="spC-4O-MQD"/>
-                                                <constraint firstItem="MtZ-1H-oTA" firstAttribute="top" secondItem="aHJ-sY-IbU" secondAttribute="bottom" constant="8" id="zFR-rF-KPJ"/>
+                                                <constraint firstItem="x3W-fc-bej" firstAttribute="top" secondItem="sEa-BW-goy" secondAttribute="bottom" constant="15" id="z5Q-4X-mhN"/>
+                                                <constraint firstItem="MtZ-1H-oTA" firstAttribute="top" secondItem="aHJ-sY-IbU" secondAttribute="bottom" constant="5" id="zFR-rF-KPJ"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" name="LightGrayColor"/>
                                         <connections>
                                             <outlet property="imageArticle" destination="sEa-BW-goy" id="hzD-aM-t4d"/>
-                                            <outlet property="lblDescriptionArticle" destination="cu7-lR-6LU" id="83b-R5-ZqM"/>
+                                            <outlet property="lblDescriptionArticle" destination="x3W-fc-bej" id="nb6-xq-FKL"/>
                                             <outlet property="lblShareDateArticle" destination="tBH-K3-2RL" id="2Of-6N-NoQ"/>
                                             <outlet property="lblShareHourArticle" destination="v0f-L0-kgf" id="Pnc-1h-ft7"/>
                                             <outlet property="lblTitleArticle" destination="aHJ-sY-IbU" id="YIP-fp-GcX"/>
+                                            <segue destination="HJV-kA-AEg" kind="show" identifier="ShowArticleSegue" id="OxB-Ea-4X7"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="WhiteColor"/>
                         <constraints>
-                            <constraint firstItem="lPA-VU-Az0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="7GB-QV-YNA"/>
+                            <constraint firstItem="lPA-VU-Az0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="5" id="7GB-QV-YNA"/>
                             <constraint firstItem="lPA-VU-Az0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="7dN-Sa-718"/>
                             <constraint firstAttribute="bottom" secondItem="u1b-2k-Adn" secondAttribute="bottom" id="OF3-on-q3R"/>
                             <constraint firstItem="lPA-VU-Az0" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-15" id="b1u-Qn-sm4"/>
-                            <constraint firstItem="u1b-2k-Adn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="gy9-lF-OQx"/>
+                            <constraint firstItem="u1b-2k-Adn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gy9-lF-OQx"/>
                             <constraint firstItem="u1b-2k-Adn" firstAttribute="top" secondItem="lPA-VU-Az0" secondAttribute="bottom" constant="15" id="q8I-MH-2sZ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="u1b-2k-Adn" secondAttribute="trailing" constant="10" id="z6Y-Fc-oRA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="u1b-2k-Adn" secondAttribute="trailing" id="z6Y-Fc-oRA"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="NT TIMES" id="een-CM-3jH"/>
@@ -161,22 +179,14 @@ Il servizio con sms non verrà comunque adottato dalle questure di Bologna, Napo
             </objects>
             <point key="canvasLocation" x="1265.217391304348" y="91.071428571428569"/>
         </scene>
-        <!--View Controller-->
+        <!--Article View Controller-->
         <scene sceneID="zpT-HY-Naf">
             <objects>
-                <viewController id="HJV-kA-AEg" sceneMemberID="viewController">
+                <viewController id="HJV-kA-AEg" customClass="ArticleViewController" customModule="NYT__NEWS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7hm-UI-ehu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G1J-QO-u4f">
-                                <rect key="frame" x="22" y="43" width="73" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="Back">
-                                    <color key="titleColor" red="0.22727401389999999" green="0.44069094310000001" blue="0.2335323946" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rectangle.3.offgrid.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="WLx-Ko-1zq">
                                 <rect key="frame" x="20" y="120" width="166" height="156"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -198,9 +208,9 @@ Il servizio con sms non verrà comunque adottato dalle questure di Bologna, Napo
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="15" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="19d-nC-jwj">
                                 <rect key="frame" x="22" y="378" width="374" height="253"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <mutableString key="text">Inserisci il numero di pratica (10 caratteri) o il tuo numero di assicurata (12 caratteri) della richiesta del tuo permesso di soggiorno 
+                                <string key="text">Inserisci il numero di pratica (10 caratteri) o il tuo numero di assicurata (12 caratteri) della richiesta del tuo permesso di soggiorno 
 Oltre all’avviso visualizzabile tramite questo sistema informatico, sullo stato del procedimento, sarà inviato al cittadino straniero un sms con l’indicazione delle modalità per il ritiro del permesso di soggiorno già pronto: giorno, ora e luogo.
-Il servizio con sms non verrà comunque adottato dalle questure di Bologna, Napoli, Modena, Padova, Caserta e Genova, che continueranno ad utilizzare propri sistemi.</mutableString>
+Il servizio con sms non verrà comunque adottato dalle questure di Bologna, Napoli, Modena, Padova, Caserta e Genova, che continueranno ad utilizzare propri sistemi.</string>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
                                 <color key="textColor" white="0.0" alpha="0.76178281670374581" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -209,10 +219,11 @@ Il servizio con sms non verrà comunque adottato dalle questure di Bologna, Napo
                         <viewLayoutGuide key="safeArea" id="fJ1-Mm-0fD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="mtz-85-plZ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P9h-du-af2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2184.057971014493" y="91.741071428571431"/>
+            <point key="canvasLocation" x="1987" y="91"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PPc-aE-XKe">
@@ -237,7 +248,20 @@ Il servizio con sms non verrà comunque adottato dalle questure di Bologna, Napo
         </scene>
     </scenes>
     <resources>
+        <image name="place-holder" width="960" height="540"/>
         <image name="rectangle.3.offgrid.fill" catalog="system" width="128" height="81"/>
+        <namedColor name="BlackColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <namedColor name="GrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LightGrayColor">
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="WhiteColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

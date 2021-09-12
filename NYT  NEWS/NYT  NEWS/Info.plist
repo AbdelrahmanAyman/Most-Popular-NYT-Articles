@@ -13,9 +13,9 @@
 	<string>Light</string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Poppins-Regula</string>
-		<string>Poppins-Medium</string>
-		<string>Poppins-SemiBold</string>
+		<string>Poppins-Regula.ttf</string>
+		<string>Poppins-Medium.ttf</string>
+		<string>Poppins-SemiBold.ttf</string>
 		<string>Poppins-Bold</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>

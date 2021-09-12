@@ -23,7 +23,7 @@ class NetworkHandler: NSObject {
     }
     
     private func handleResponse<T:Decodable>(urlPath: String, response: DataResponse<T,AFError>, returnWithData: @escaping(T?)->(), returnError: @escaping(Error?)->()) {
-        print("\(urlPath), Response: \(String(describing: response.value))")
+        //print("\(urlPath), Response: \(String(describing: response.value))")
         switch response.result{
         case .success( _ ):
             guard let data = response.value else {
